@@ -1,0 +1,29 @@
+
+{% comment %} {% extends 'base.html' %} {% endcomment %}
+
+{% comment %} {% block title %}Home{% endblock %} {% endcomment %}
+
+{% block content %}
+{% if user.is_authenticated %}
+  Hi {{ user.username }}    <t>  &nbsp; &nbsp;&nbsp;<a href="{% url 'logout' %}">Log Out</a>
+{% else %}
+  <p>You are not logged in &nbsp;&nbsp;&nbsp;
+  <a href="{% url 'login' %}">Log In</a> <p>
+{% endif %}
+{% endblock %}
+<br/><br/>
+<a href="create" >create</a>
+<ul> 
+	<!-- Iterate over object_list -->
+	{% for object in object_list %} 
+	<!-- Display Objects -->
+	<li><a href="{{object.id}}/detail" >{{ object.name }}</a></li> 
+
+	<a href="{{object.id}}/delete" >delete</a>
+	<a href="{{object.id}}/update" >update</a>
+	<hr/> 
+	<!-- If objet_list is empty -->
+	{% empty %} 
+	<li>No objects yet.</li> 
+	{% endfor %} 
+</ul> 
