@@ -18,3 +18,10 @@ class signin(UserCreationForm):
             'email', 
             'password1', 
             'password2',]
+
+
+class Subscribe(forms.Form):
+    Email = forms.EmailField()
+
+    def __str__(self):
+        return self.Email
